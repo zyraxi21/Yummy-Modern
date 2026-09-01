@@ -1,4 +1,9 @@
-_site
-.sass-cache
-.jekyll-metadata
-.idea
+_site/
+.jekyll-cache/
+vendor/
+.bundle/
+node_modules/
+assets/vendor/
+dump.html
+fetched-page.html
+fetched-page2.html

@@ -1,127 +1,117 @@
-# Yummy Jekyll Theme
+# Yummy Modern 主题
 
-A Simple, Bootstrap Based Theme. Especially for developers who like to show their projects on website and like to take notes. There are also some magical features to discover. 
+Yummy Modern 是基于原主题修改、现代化并重新分发的 Jekyll 主题，适合希望展示项目、记录笔记的开发者。
 
-## [Live Demo](http://dongchuan.github.io/)
+主题保留原模板的简洁 Bootstrap 风格，同时使用更现代的构建方式与前端依赖。
 
-Open issues if you find bugs or even have trouble installing jekyll or dependencies. :D
+## 原项目与许可证
 
-Or contact: dongchuan55@gmail.com
+本项目是对原主题的修改和再分发版本。
 
-> Strongly suggest to fork and change project name to create your GitHub Pages instead of downloading it directly. Because in the future, I will develop many funny modules like 'footprint' to show your world wide trip. Could be easier to merge new features in the future.
+- 原项目：Yummy-Jekyll
+- 原始版权：Copyright (c) 2016 DONG Chuan
+- 原项目地址：https://github.com/DONGChuan/Yummy-Jekyll
+- 许可证：Apache License 2.0
 
-## Notable Features
+根据 Apache License 2.0 第 4 条，本项目：
 
-* Compatible with Jekyll 3.x and GitHub Pages
-* Based on Bootstrap
-* [Github Module](http://dongchuan.github.io/open-source) to show your popular projects in a single page and on sidebar automatically. (Datas are retreived by github metadata instead of by api calls, so no delay) 
-* [Post Module](http://dongchuan.github.io/blog) to show all your posts with timeline
-* [Bookmark Module](http://dongchuan.github.io/bookmark) to establish a quick mark about all libs/tools/books you like to use.
-* [Post Navigation Module](http://dongchuan.github.io/css/2016/04/22/CSS-Animation.html) to generat a quick directory of your post by titles/subtitles automatically.
-* Support [Disqus Comment](https://disqus.com/home/explore/)
-* Support [Google Analytics](https://analytics.google.com/analytics/web/)
+- 保留了原 LICENSE 和原始版权声明；
+- 新增 NOTICE 文件，说明原始来源和修改情况；
+- 新增 CHANGES.md，记录主要修改和涉及文件；
+- 在主要页面和源码中保留来源提示，并明确本项目为衍生版本；
+- 以 Apache License 2.0 重新分发修改后的代码。
 
-Features in future:
-* A Footprint module to show all your travel around the world
-* Feature to share. (Facebook, twitter, evernote and so on)
-* (Not sure) A embeded todo list. (Not sure) to travel, to complete, to do for your parents, etc. To do in life!
-* Creative ideas to discuss with you :P
+## 主要功能
 
-## Install and setup
+* 兼容 Jekyll 3.x/4.x 和 GitHub Pages
+* 基于 Bootstrap 5（由原始 Bootstrap 3 升级）
+* 保留开源项目页和侧边栏模块；支持 GitHub metadata 自动加载，填写配置后生效
+* 支持可配置的 Disqus 评论；未填写 `disque` 时不会加载
+* 时间线形式的博客列表
+* 收藏常用库、工具和书籍的书签页面
+* 自动根据文章标题生成文章目录
+* 支持代码复制、KaTeX 公式和 Mermaid 图表
 
-Before using it, you may need [Bower](http://bower.io/) and [Bundler](http://bundler.io/) on your local to install dependencies.
+## 安装与配置
 
-1. Fork code and clone
-2. Run `bower install` to install all dependencies in [bower.json](https://github.com/DONGChuan/DONGChuan.github.io/blob/master/bower.json)
-3. Run `bundle install` to install all dependencies in [Gemfile](https://github.com/DONGChuan/DONGChuan.github.io/blob/master/Gemfile)
-4. Update `_config.yml` with your own settings.
-5. Add posts in `/_posts`
-6. Commit to your own Username.github.io repository.
-7. Then come back to star this theme!
+在本地使用前，需要安装 [Bundler](http://bundler.io/) 和 Node.js。
 
-> When install dependencies by bundler or gem, you may have some errors depending on your environment.
+1. Fork 本项目并克隆到本地
+2. 运行 `npm install` 安装前端依赖
+3. 运行 `npm run build` 构建前端静态资源
+4. 运行 `bundle install` 安装 Jekyll 依赖
+5. 修改 `_config.yml` 中的站点设置
+6. 在 `/_posts` 中添加文章
+7. 提交到自己的 GitHub Pages 仓库
 
-> Error about `json`. Check response of [Massimo Fazzolari on Stackoverflow](http://stackoverflow.com/questions/8100891/the-json-native-gem-requires-installed-build-tools) to quick fix your problem. (Please also use latest version instead of 1.9.3 mentioned in the response)
-  
-> Error about `jekyll-paginate`. Please check [here](http://stackoverflow.com/questions/35401566/dont-have-jekyll-paginate-or-one-of-its-dependencies-installed)
+本地预览：
 
-> Error about `SSL_connect`. Please check [here](http://stackoverflow.com/questions/15305350/gem-install-fails-with-openssl-failure) and [here](http://railsapps.github.io/openssl-certificate-verify-failed.html)
+```bash
+bundle exec jekyll serve
+```
 
-> For the moment, when you test on your local, you need to keep internet connection. Bug will be fixed soon.
+访问 `http://localhost:4000` 即可查看。
 
-## How to use
+## 使用方法
 
-#### Create a new post
+#### 新建文章
 
-Create a `.md` file inside `_posts` folder.
-
-Name the file according to the standard jekyll format.
+在 `_posts` 文件夹中创建以标准 Jekyll 格式命名的 `.md` 文件：
 
 ```
 2016-01-19-i-love-yummy.md
 ```
 
-Write the Front Matter and content in the file.
+在 Front Matter 中设置布局、标题、分类和标签：
 
 ```
 ---
 layout: post
-title: Post title
-category: Category
-tags: [tag1, tag2]
+title: 文章标题
+category: 分类
+tags: [标签1, 标签2]
 ---
 ```
 
-Please find examples [here](https://github.com/DONGChuan/DONGChuan.github.io/tree/master/_posts)
+示例文章见原主题仓库的 `_posts` 目录。
 
-> Jekyll supports different structure of repository. You could just create as many folders as you want under _posts. Then jekyll will look through all folders/subfolders to find your posts. So cool, right? :D
+> Jekyll 支持不同的目录结构。你可以在 `_posts` 下创建任意数量的文件夹，Jekyll 会自动查找其中的文章。
 
-#### [Post Navigation Module](http://dongchuan.github.io/css/2016/04/22/CSS-Animation.html)
+#### 文章目录
 
-When writing post, please always follow this format:
-
-```
-Description about this post, blablabla
-
-## Title A
-
-### Title A-1
-
-### Title A-2
-
-## Title B
-
-### Title B-1
+写作时建议遵循以下标题层级，目录会自动识别：
 
 ```
+关于这篇文章的简介……
 
-So, Title A, A-1, A-2, Title B, B-1 will be detected and created as a directory
+## 一级标题
 
-For example, [a demo post](https://github.com/DONGChuan/DONGChuan.github.io/edit/master/_posts/2016-04-22-CSS-Animation.md)
+### 二级标题
 
-But if you do not like it or your post is quite short. You want to hide this navigation to make your post occupy your full screen. You just need to set **no-post-nav:true** in the Front Matter of the post where you want to hide this feature :D
+## 另一个一级标题
+```
 
-#### [Github Module](http://dongchuan.github.io/open-source)
+如果不想要文章目录，可以在 Front Matter 中设置 **no-post-nav: true**。
 
-This module will get automatically all your repository information from github. But to test on your local, you must keep internet connection. 
-In the future, it will also show the repositories you contributed a lot and the ones of your organization.
+#### 开源项目模块
 
-#### [Bookmark Module](http://dongchuan.github.io/bookmark)
+开源项目模块会自动获取 GitHub 仓库信息。在 `_config.yml` 中填写 `repository` 后启用；留空时不加载。
 
-To add new marks, you only need to edit [bookmark.md](https://github.com/DONGChuan/Yummy-Jekyll/blob/master/bookmark.md).
+#### Disqus 评论
 
-#### [Customize About Page](http://dongchuan.github.io/about)
+在 `_config.yml` 中填写 `disque` 后，首页、博客和文章页会加载 Disqus 评论；留空时不加载。
 
-Feel free to customize about.me page to show yourself. You only need to modify [about.md](https://github.com/DONGChuan/Yummy-Jekyll/blob/master/about.md) and [about.html](https://github.com/DONGChuan/Yummy-Jekyll/blob/master/_includes/about.html)
+#### 书签模块
 
-## ToDo
+收藏内容只需编辑 `bookmark.md`。
 
-- [ ] List posts by a specified tag
-- [ ] New module FootPrint to show your world around trips
-- [ ] Show projects from your orgnization on github. (Siderbar, in open-source page)
-- [ ] To fix bug - could only test on local with internet connected.
+#### 自定义关于页面
 
-## Contributor
+可以自由修改 `about.md` 来介绍自己。
+
+## 贡献者
+
+原始模板贡献者：
 
 * [DONGChuan](https://github.com/DONGChuan)
 * [Mojtaba Koosej](https://github.com/mkoosej)
@@ -130,10 +120,10 @@ Feel free to customize about.me page to show yourself. You only need to modify [
 * [LM450N](https://github.com/LM450N)
 * [XhmikosR](https://github.com/XhmikosR)
 
-## License
+## 许可证
 
-The Apache License 2.0
+本项目采用 Apache License 2.0。
 
-Copyright (c) 2016 DONG Chuan
+原始版权：Copyright (c) 2016 DONG Chuan
 
-Check [LICENSE](https://github.com/DONGChuan/DONGChuan.github.io/blob/master/LICENSE) file and [official website](http://www.apache.org/licenses/LICENSE-2.0) for details
+详细内容见 [LICENSE](LICENSE)、[NOTICE](NOTICE) 和 [CHANGES.md](CHANGES.md)。

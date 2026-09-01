@@ -1,8 +1,234 @@
+/*
+ * Yummy Modern - modified derivative of the original theme.
+ * This file has been modified from the original project and is distributed
+ * under the Apache License, Version 2.0.
+ */
+
+/* Theme tokens */
+:root {
+    color-scheme: light;
+
+    --brand-primary: #f7793c;
+    --brand-primary-hover: #d8571f;
+    --brand-primary-strong: #b8471d;
+    --brand-primary-soft: #fff0e8;
+    --brand-primary-border: #f2b79d;
+    --brand-on-primary: #fff;
+
+    --page-bg: #fff;
+    --surface: #fff;
+    --surface-muted: #f6f8fa;
+    --surface-hover: #eef1f4;
+    --border-color: #d8dee4;
+    --border-strong: #b8c0c8;
+    --text-color: #24292f;
+    --text-muted: #6b7280;
+    --text-subtle: #9aa2ab;
+    --code-bg: #f6f8fa;
+    --header-bg: rgba(255, 255, 255, 0.14);
+    --shadow-color: rgba(0, 0, 0, 0.12);
+
+    --success: #28a745;
+    --success-text: #155724;
+    --success-bg: #d4edda;
+    --success-border: #c3e6cb;
+
+    --bs-body-bg: var(--page-bg);
+    --bs-body-color: var(--text-color);
+    --bs-secondary-color: var(--text-muted);
+    --bs-border-color: var(--border-color);
+    --bs-link-color: var(--brand-primary);
+    --bs-link-color-rgb: 247, 121, 60;
+    --bs-link-hover-color: var(--brand-primary-hover);
+    --bs-link-hover-color-rgb: 216, 87, 31;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+
+        --brand-primary-hover: #ff925f;
+        --brand-primary-strong: #83401e;
+        --brand-primary-soft: #3b2118;
+        --brand-primary-border: #74452f;
+
+        --page-bg: #101418;
+        --surface: #171c21;
+        --surface-muted: #1f252b;
+        --surface-hover: #272e35;
+        --border-color: #343b43;
+        --border-strong: #4a5560;
+        --text-color: #e6edf3;
+        --text-muted: #a9b2bc;
+        --text-subtle: #7d8894;
+        --code-bg: #0d1117;
+        --header-bg: rgba(16, 20, 24, 0.42);
+        --shadow-color: rgba(0, 0, 0, 0.45);
+
+        --success: #3fb950;
+        --success-text: #8ee7a7;
+        --success-bg: #163a22;
+        --success-border: #2d6a3f;
+    }
+}
+
+/* Source Han Serif CN Variable Font */
+@font-face {
+    font-family: "Source Han Serif CN VF";
+    src: url("/assets/fonts/SourceHanSerifCN-VF.otf.woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+/* NewCM10 */
+@font-face {
+    font-family: "NewCM10";
+    src: url("/assets/fonts/NewCM10-Book.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NewCM10";
+    src: url("/assets/fonts/NewCM10-BookItalic.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NewCM10";
+    src: url("/assets/fonts/NewCM10-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NewCM10";
+    src: url("/assets/fonts/NewCM10-BoldItalic.otf") format("opentype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* LXGW WenKai Mono */
+@font-face {
+    font-family: "LXGW WenKai Mono";
+    src: url("/assets/fonts/LXGWWenKaiMono-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
-    font-family: Microsoft YaHei,"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: "NewCM10", "Source Han Serif CN VF", 思源宋体, "Source Han Serif", 思源黑体, "Source Han Sans", "MiSans", "Harmony Sans", "OPPO Sans", 微软雅黑, "Microsoft YaHei", "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
+/* Bootstrap 3 style compatibility for Bootstrap 5 */
+body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: var(--text-color);
+    background-color: var(--page-bg);
+}
+
+a {
+    color: var(--brand-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--brand-primary-hover);
+    text-decoration: underline;
+}
+
+.badge {
+    background-color: var(--brand-primary);
+}
+
+.card {
+    --bs-card-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.post-list-title a,
+.posts-list-name.bubble-float-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.post-list-title .post-category-badge,
+.posts-list-name .post-category-badge {
+    flex: 0 0 auto;
+    font-size: 0.68em;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 0.2em 0.55em;
+}
+
+.post-list-title .post-category-badge {
+    font-size: 0.48em;
+}
+
+.list-group {
+    --bs-list-group-active-bg: var(--brand-primary);
+    --bs-list-group-active-border-color: var(--brand-primary);
+}
+
+.hvr-underline-from-center:before {
+    background-color: var(--brand-primary);
+}
+
+.site-header:not(.site-header-nav-scrolled):not(.site-header-nav-scrolled-ph) .hvr-underline-from-center:before {
+    background-color: var(--brand-on-primary);
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+.row {
+    --bs-gutter-x: 15px;
+    --bs-gutter-y: 0;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.row > [class*="col-"] {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+ol, ul, dl {
+    margin: 0;
+    padding-left: 0;
+}
+
+
 
 /** Header **/
 .site-header{
@@ -16,8 +242,10 @@
     right: 0;
     z-index: 103;
 
-    color: #000;
-    background: #fff;
+    color: var(--brand-on-primary);
+    background: var(--header-bg);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    backdrop-filter: blur(18px) saturate(1.4);
 
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -27,16 +255,17 @@
 }
 
 .site-header #site-header-brand {
-    color: #2e2e2e;
+    color: var(--brand-on-primary);
     float: left;
 }
+
 
 .site-header a {
     text-decoration: none;
 }
 
 .site-header a:hover {
-    color: #4183c4;
+    color: var(--brand-on-primary);
 }
 
 #site-header-brand, #site-header-brand .octicon {
@@ -47,13 +276,21 @@
     line-height: 38px;
 }
 
+.site-brand-logo {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
 .site-header-nav{
     float:right;
     margin-bottom: -20px;
 }
 
 .site-header-nav-item {
-    color: #000;
+    color: var(--brand-on-primary);
     display:inline-block;
     padding:10px;
     margin-left:1.25rem;
@@ -62,34 +299,54 @@
 
 /******* Scroll Start *******/
 .site-header {
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px var(--shadow-color);
 }
 
 .site-header.site-header-nav-scrolled {
     margin: 0;
-    background-color: white;
+    color: var(--text-color);
+    background-color: var(--header-bg);
 
     -webkit-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     -moz-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     -ms-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     -o-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
+}
+
+.site-header.site-header-nav-scrolled a,
+.site-header.site-header-nav-scrolled #site-header-brand {
+    color: var(--text-color);
+}
+
+.site-header.site-header-nav-scrolled a:hover {
+    color: var(--brand-primary-hover);
 }
 /******* Scroll End *******/
 
 /******* Scroll Start on the phone *******/
 .site-header {
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px var(--shadow-color);
 }
 
 .site-header.site-header-nav-scrolled-ph {
     margin-top: -160px;
+    color: var(--text-color);
 
     -webkit-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     -moz-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     -ms-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     -o-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
+}
+
+.site-header.site-header-nav-scrolled-ph a,
+.site-header.site-header-nav-scrolled-ph #site-header-brand {
+    color: var(--text-color);
+}
+
+.site-header.site-header-nav-scrolled-ph a:hover {
+    color: var(--brand-primary-hover);
 }
 /******* Scroll End *******/
 
@@ -97,22 +354,25 @@
 .jumbotron {
     padding-top: 200px;
     padding-bottom: 100px;
-    color: #fff;
+    margin-bottom: 40px;
+    color: var(--brand-on-primary);
+    background-color: var(--brand-primary-strong);
 }
 
 .jumbotron a {
-    color: #fff;
+    color: var(--brand-on-primary);
     text-decoration: none;
 }
 .jumbotron #jumbotron-meta-info {
-    margin-top: 20px;
+    margin-top: 20px;;
 }
 
 .jumbotron .meta-info {
+    display: inline-block;
+    vertical-align: baseline;
+    line-height: 1.5;
     font-size: 20px;
     margin-right: 15px;
-    display: inline-block;
-    vertical-align: middle;
 }
 
 .jumbotron.meta-info, .jumbotron .meta-info .octicon {
@@ -126,18 +386,31 @@
     padding:40px 0;
     font-size:12px;
     line-height:1.5;
-    color:#777;
-    border-top:2px solid #eee
+    color: var(--text-muted);
+    border-top: 2px solid var(--border-color);
 }
 
-.site-footer .octicon-mark-github {
+.site-footer .octicon {
     position: absolute;
     left: 50%;
-    color: #ccc;
+    color: var(--text-subtle);
 }
 
-.site-footer .octicon-mark-github:hover {
-    color:#bbb;
+.site-footer .octicon:hover {
+    color: var(--text-muted);
+}
+
+.site-footer .footer-github-link {
+    color: var(--text-subtle);
+    text-decoration: none;
+}
+
+.site-footer .footer-github-link:hover {
+    color: var(--text-muted);
+}
+
+.site-footer .footer-github-icon {
+    margin-left: -0.75em;
 }
 
 /** Post List **/
@@ -146,7 +419,7 @@
     padding-top: 30px;
     padding-bottom: 30px;
     list-style: none;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .post-list-title a {
@@ -157,13 +430,13 @@
     margin-top: 8px;
     margin-bottom: 0;
     font-size: 18px;
-    color: #666;
+    color: var(--text-muted);
 }
 
 .post-list-meta {
     margin-top: 8px;
     margin-bottom: 0;
-    color: #888;
+    color: var(--text-muted);
 }
 
 .post-list-meta, .post-list-meta.octicon {
@@ -174,6 +447,541 @@
     background-size: contain; /* To fix strange behavior when zoom in/out */
 }
 
+.caption {
+    padding: 9px;
+}
+
+
 .sidebar-title {
     text-align: center;
+}
+
+/* 数学渲染优化 */
+/* 修正 KaTeX 整体字体，特别是正体部分 */
+.katex {
+    font-family: KaTeX_Main, "Times New Roman", serif !important;
+    font-size: 1.1em !important;
+    text-rendering: optimizeLegibility;
+    vertical-align: baseline;
+}
+
+/* 专门针对 mathrm 字符的字体强制映射 */
+.katex .mathrm {
+    font-family: KaTeX_Main !important;
+    font-style: normal !important;
+}
+
+/* 确保数学符号使用 KaTeX 字体 */
+.katex .mathit,
+.katex .mathnormal {
+    font-family: KaTeX_Math, "Times New Roman", serif !important;
+    font-style: italic !important;
+}
+
+
+/* 无论在哪，只要是显示模式的公式，必须独占一行并居中 */
+.katex-display {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 1em 0 !important;
+  clear: both; /* 防止被浮动元素挤压 */
+}
+
+/* Article content headings use serif style */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    font-family: "Source Han Serif CN VF", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, Georgia, "Times New Roman", serif;
+}
+/* LaTeX copy button */
+.math-copy {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: baseline;
+}
+
+.latex-copy-btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: 0;
+    z-index: 20;
+    padding: 2px 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    width: auto;
+    min-width: 0;
+    white-space: nowrap;
+    color: var(--text-color);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.math-copy:hover .latex-copy-btn,
+.math-copy.math-copy-hover .latex-copy-btn {
+    display: block;
+}
+
+.math-copy.latex-copy-done .latex-copy-btn {
+    opacity: 0 !important;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.latex-copy-btn:hover {
+    color: var(--text-color);
+    border-color: var(--text-muted);
+    background: var(--surface-hover);
+}
+
+.latex-copy-success {
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: 0;
+    z-index: 20;
+    padding: 2px 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    width: auto;
+    min-width: 0;
+    white-space: nowrap;
+    color: var(--brand-on-primary);
+    background: var(--success);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.latex-copy-success.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Octicons SVG */
+.octicon {
+    display: inline-block;
+    vertical-align: middle;
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+}
+
+.mega-octicon {
+    width: 1.5em;
+    height: 1.5em;
+}
+/* Footer license note */
+.site-footer .license-note {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    max-width: 70%;
+}
+
+.site-footer .license-note img {
+    vertical-align: baseline;
+}
+
+
+/* Homepage icons align with text */
+.jumbotron .meta-info .octicon,
+.post-list-meta .octicon {
+    vertical-align: -0.125em;
+}
+/* Pagination spacing */
+.pagination {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+/* Ubuntu Mono for code blocks */
+@font-face {
+    font-family: "Ubuntu Mono";
+    src: url("/assets/fonts/UbuntuMono-R.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Ubuntu Mono";
+    src: url("/assets/fonts/UbuntuMono-RI.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Ubuntu Mono";
+    src: url("/assets/fonts/UbuntuMono-B.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Ubuntu Mono";
+    src: url("/assets/fonts/UbuntuMono-BI.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+}
+
+code,
+kbd,
+pre,
+samp,
+.highlight,
+.highlight pre,
+.markdown-body code,
+.markdown-body pre {
+    font-family: "Ubuntu Mono", "LXGW WenKai Mono", "Source Code Pro", Consolas, Menlo, monospace;
+}
+/* Code copy buttons */
+.highlighter-rouge {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.highlighter-rouge .highlight {
+    border-radius: 0 0 12px 12px;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    background: var(--brand-primary-soft);
+    border: 1px solid var(--brand-primary-border);
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+    font-size: 12px;
+}
+
+.code-lang {
+    font-family: "Ubuntu Mono", Consolas, Menlo, monospace;
+    color: var(--brand-primary-hover);
+}
+
+.code-copy-btn,
+.inline-code-copy-btn {
+    padding: 2px 8px;
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: nowrap;
+    width: auto;
+    min-width: 0;
+    color: var(--text-color);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.code-copy-btn:hover,
+.inline-code-copy-btn:hover {
+    background: var(--surface-hover);
+}
+
+.code-copy-btn.copied,
+.inline-code-copy-btn.copied {
+    color: var(--success-text);
+    background: var(--success-bg);
+    border-color: var(--success-border);
+}
+
+.code-copy-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.inline-code-copy-btn {
+    display: none;
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 0;
+    z-index: 20;
+    margin-left: 0;
+    padding: 1px 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    vertical-align: middle;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+}
+
+.code-copy-wrap:hover .inline-code-copy-btn,
+.code-copy-wrap.code-copy-hover .inline-code-copy-btn {
+    display: inline-block;
+}
+
+/* 强制 $$...$$ 公式独立成行 */
+.kdmath {
+    display: block;
+    text-align: center;
+    margin: 0.8em 0;
+}
+.code-block-wrapper {
+    border: 1.5px solid var(--brand-primary-border);
+    border-radius: 12px;
+    overflow: hidden;
+    clip-path: inset(0 round 12px);
+    margin: 1em 0;
+    background: var(--brand-primary-soft);
+    background-clip: padding-box;
+}
+
+.code-block-wrapper .code-header {
+    border: 0;
+    border-bottom: 1px solid var(--brand-primary-border);
+    border-radius: 12px 12px 0 0;
+}
+
+.code-block-wrapper .highlight {
+    border-radius: 0;
+}
+
+.code-block-wrapper .highlighter-rouge,
+.code-block-wrapper .highlighter-rouge .highlight {
+    border-radius: 0;
+    overflow: visible;
+}
+
+.code-block-wrapper pre,
+.code-block-wrapper .highlight,
+.code-block-wrapper .highlight pre {
+    margin: 0;
+}
+
+.code-block-wrapper pre,
+.code-block-wrapper .highlight {
+    background: var(--brand-primary-soft);
+}
+
+.code-block-wrapper pre code,
+.code-block-wrapper .highlight code {
+    display: block;
+    color: var(--brand-primary-hover);
+}
+
+.code-block-wrapper .code-body {
+    display: flex;
+    overflow: hidden;
+    border-radius: 0 0 12px 12px;
+}
+
+.code-block-wrapper .code-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* 与 Primer Markdown 的 pre 排版保持一致，避免行号纵向偏移 */
+    padding: 16px 8px;
+    color: var(--brand-primary-hover);
+    background: var(--brand-primary-soft);
+    border-right: 1px solid var(--brand-primary-border);
+    user-select: none;
+    font-family: "Ubuntu Mono", Consolas, Menlo, monospace !important;
+    font-size: 85%;
+    line-height: 1.45;
+}
+
+.code-block-wrapper .code-body > pre,
+.code-block-wrapper .code-body > .highlight,
+.code-block-wrapper .code-body > .highlighter-rouge {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.code-block-wrapper .code-body > .highlight pre,
+.code-block-wrapper .code-body > .highlighter-rouge > .highlight {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+html {
+    background-color: var(--page-bg);
+}
+
+/* Primer Markdown theme integration */
+.markdown-body code {
+    color: var(--brand-primary-hover);
+    background-color: var(--brand-primary-soft);
+}
+
+.markdown-body h1 {
+    border-bottom-color: var(--border-color);
+}
+
+.markdown-body hr {
+    background-color: var(--border-color);
+}
+
+.markdown-body blockquote {
+    color: var(--text-muted);
+    border-left-color: var(--border-strong);
+}
+
+.markdown-body table {
+    color: var(--text-color);
+}
+
+.markdown-body table th,
+.markdown-body table td {
+    border-color: var(--border-color);
+}
+
+.markdown-body table tr {
+    background-color: var(--surface);
+}
+
+.markdown-body table tr:nth-child(2n) {
+    background-color: var(--surface-muted);
+}
+
+table.has-custom-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+table.has-custom-scrollbar::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.table-floating-scrollbar {
+    position: fixed;
+    left: 16px;
+    right: auto;
+    bottom: 10px;
+    z-index: 120;
+    display: none;
+    width: auto;
+    padding: 5px;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    box-sizing: border-box;
+}
+
+.table-floating-scrollbar.visible {
+    opacity: 1;
+    pointer-events: auto;
+    display: block;
+}
+
+.table-floating-scroll-track {
+    position: relative;
+    height: 8px;
+    background: var(--surface-muted);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    touch-action: none;
+}
+
+.table-floating-scroll-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 36px;
+    background: var(--brand-primary);
+    border-radius: 4px;
+    cursor: grab;
+}
+
+.table-floating-scroll-thumb:active {
+    cursor: grabbing;
+}
+
+.markdown-body pre,
+.markdown-body .highlight pre {
+    color: var(--brand-primary-hover);
+    background-color: var(--brand-primary-soft);
+    border: 1px solid var(--brand-primary-border);
+}
+
+.markdown-body pre code,
+.markdown-body pre tt {
+    color: var(--brand-primary-hover);
+    background-color: transparent;
+}
+
+.markdown-body kbd {
+    color: var(--text-color);
+    background-color: var(--surface-muted);
+    border: 1px solid var(--border-color);
+    border-bottom-color: var(--border-strong);
+    box-shadow: inset 0 -1px 0 var(--border-strong);
+}
+
+.highlight {
+    background-color: var(--brand-primary-soft);
+}
+
+.thumbnail {
+    background-color: var(--surface);
+}
+
+.code-block-wrapper pre,
+.code-block-wrapper .highlight pre {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+pre.mermaid-rendered {
+    display: block;
+    padding: 16px;
+    overflow-x: auto;
+    text-align: center;
+    background-color: var(--surface-muted);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.mermaid-block-wrapper .code-body {
+    display: block;
+    overflow: hidden;
+    border-radius: 0 0 12px 12px;
+}
+
+.mermaid-block-wrapper pre.mermaid-rendered {
+    margin: 0;
+    padding: 16px;
+    background-color: var(--brand-primary-soft);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+pre.mermaid-rendered svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
 }

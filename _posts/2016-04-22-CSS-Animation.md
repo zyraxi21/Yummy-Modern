@@ -1,22 +1,22 @@
 ---
 layout: post
-title: CSS Animation
+title: CSS 动画
 category: CSS
 tags: [css]
 ---
 
-Quick note about CSS animation. 
+关于 CSS 动画的快速笔记。
 
-## CSS Animation
+## CSS 动画
 
-CSS3 animation lets an element gradually change from one style to another.
+CSS3 动画可以让元素逐渐从一种样式过渡到另一种样式。
 
-Two steps:
+分为两步：
 
-1. Use `@keyframes` to define an animation.
-2. Set this animation on an element with animation properties
+1. 使用 `@keyframes` 定义动画。
+2. 在元素上通过动画属性应用该动画。
 
-We could set properties one-by-one or with following shorthand:
+你可以逐个设置属性，也可以使用下面的简写形式：
 
 {% highlight css %}
 animation: [animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction] [animation-fill-mode] [animation-play-state];
@@ -24,13 +24,13 @@ animation: [animation-name] [animation-duration] [animation-timing-function] [an
 
 ## @keyframes
 
-It defines what the animation looks like at each stage of the animation timeline. It is composed of:
+它定义动画时间轴中每个阶段的样子，由以下内容组成：
 
-* Name of the animation. For example, changeColor.
-* Stages: From 0% to 100% to represent the whole process of animation
-* CSS Properties: The CSS properties defined for each stage of the animation timeline.
+* 动画名称，例如 `changeColor`。
+* 阶段：从 `0%` 到 `100%`，表示动画的完整过程。
+* CSS 属性：在动画时间轴每个阶段定义的 CSS 属性。
 
-Following example creates an animation called `changeColor` and assign it to `div:hover`:
+下面示例创建名为 `changeColor` 的动画，并应用到 `div:hover`：
 
 {% highlight css %}
 @keyframes changeColor {
@@ -50,11 +50,11 @@ div:hover{
 }
 {% endhighlight %}
 
-> In above example, we could also use `from` to represent `0%` and `to` to represent `100%`
+> 在上例中，也可以使用 `from` 表示 `0%`，使用 `to` 表示 `100%`。
 
-## Animation Properties
+## 动画属性
 
-It has following properties: 
+动画包含以下属性：
 
 1. animation-name
 2. animation-duration
@@ -67,72 +67,66 @@ It has following properties:
 
 ### animation-name
 
-The name of the animation, defined in the @keyframes.
+动画名称，在 `@keyframes` 中定义。
 
 ### animation-duration
 
-The duration of the animation, in seconds (e.g., 5s) or milliseconds (e.g., 200ms).
+动画持续时间，单位为秒（如 `5s`）或毫秒（如 `200ms`）。
 
 ### animation-timing-function
 
-The speed curve or pace of the animation:
+动画的速度曲线或节奏：
 
-| Timing Function | Description |
+| 时间函数 | 说明 |
 |---|---|
-| linear | The animation has the same speed from start to end |
-| ease | **Default value**. The animation has a slow start, then fast, before it ends slowly. |
-| ease-in | Start slowly and end fast.  |
-| ease-out | Start more quickly than linear ones and end slowly. The opposite of ease-in. |
-| ease-in-out | Both a slow start and a slow end |
-| initial | Sets this property to its default value. So `ease`. |
-| inherit | Inherits this property from its parent element. |
+| linear | 动画从开始到结束速度相同 |
+| ease | **默认值**。开始慢，中间快，最后又慢下来。 |
+| ease-in | 开始慢，结束快。 |
+| ease-out | 比 linear 开始更快，结束后变慢。与 ease-in 相反。 |
+| ease-in-out | 开始和结束都慢 |
+| initial | 将属性设为默认值，即 `ease`。 |
+| inherit | 从父元素继承该属性。 |
 
-> Check [The basics of easing](https://developers.google.com/web/fundamentals/design-and-ui/animations/the-basics-of-easing?hl=en) for details.
+> 更多细节见 [缓动基础](https://developers.google.com/web/fundamentals/design-and-ui/animations/the-basics-of-easing?hl=en)。
 
-### animation-delay 
+### animation-delay
 
-It specifies when the animation will start. The value is defined in seconds (s) or milliseconds (mil).
+指定动画何时开始，以秒（s）或毫秒（ms）为单位。
 
 ### animation-iteration-count
 
-It specifies the number of times that the animation will play. The possible values are:
+指定动画播放次数，可能的值包括：
 
-* a specific number of iterations (default is 1)
-* `infinite` - repeats forever
+* 指定迭代次数（默认是 1）
+* `infinite`：无限重复
 * `initial`
 * `inherit`
 
 ### animation-direction
 
-It specifies whether the animation should play forward, reverse, or in alternate cycles.
+指定动画正向播放、反向播放，或是交替循环播放。
 
-* `normal` - Default. On each cycle the animation resets to the beginning state (0%) and plays forward again (to 100%).
-
-* `reverse` - On each cycle the animation resets to the end state (100%) and plays backwards (to 0%).
-
-* `alternate` - On each odd cycle, the animation plays forward (0% to 100%). On each even cycle, the animation plays backwards (100% to 0%).
-
-* `alternate-reverse` - On each odd cycle, the animation plays in reverse (100% to 0%). On each even cycle, the animation plays forward (0% or 100%).
+* `normal`：默认。每个循环都恢复到起始状态（0%），再次正向播放（到 100%）。
+* `reverse`：每个循环都恢复到结束状态（100%），再反向播放（到 0%）。
+* `alternate`：奇数次循环正向播放（0% 到 100%），偶数次循环反向播放（100% 到 0%）。
+* `alternate-reverse`：奇数次循环反向播放（100% 到 0%），偶数次循环正向播放（0% 到 100%）。
 
 ### animation-fill-mode
 
-It specifies if the animation styles are visible before or after the animation plays. 
+指定动画播放前或播放后的样式是否可见。
 
-* `normal` - Default. The animation does not apply any styles to the element, before or after the animation.
-
-* `forwards` - After the animation is finished, the styles defined in the final keyframe (100%) are retained by the element.
-
-* `backwards` - Before the animation (during the animation delay), the styles of the initial keyframe (0%) are applied to the element.
-
-* `both` - `forwards` with `backwards`.
+* `normal`：默认。动画前后都不应用任何样式。
+* `forwards`：动画结束后，保留最终关键帧（100%）定义的样式。
+* `backwards`：动画开始前（动画延迟期间），应用初始关键帧（0%）的样式。
+* `both`：同时具备 `forwards` 和 `backwards` 的效果。
 
 ### animation-play-state
 
-Two values: `running` and `paused`.
+只有两个值：`running` 和 `paused`。
 
-It specifies whether the animation is `playing` or `paused`. **Resuming a paused animation starts the animation where it was left off. But if pause an animation, the element style will return back to its origin.**
+它指定动画是“播放中”还是“已暂停”。**恢复暂停的动画会从暂停位置继续播放。但如果暂停动画，元素样式会恢复初始状态。**
 
-Example:
+示例：
 
 {% highlight css %}
 div:hover {
@@ -140,9 +134,9 @@ div:hover {
 }
 {% endhighlight %}
 
-## Multiple Animations
+## 多个动画
 
-Add multiple animations to a selector with comma:
+可以为选择器添加多个动画，中间用逗号分隔：
 
 {% highlight css %}
 div {
@@ -150,7 +144,7 @@ div {
 }
 {% endhighlight %}
 
-## Refs
+## 参考
 
 * [Imooc 十天精通CSS3](http://www.imooc.com/learn/33)
 * [CSS Animation for Beginners](https://robots.thoughtbot.com/css-animation-for-beginners#animation-iteration-count)
