@@ -875,6 +875,15 @@ html {
     padding-bottom: 40px;
 }
 
+/* 语法高亮生成的嵌套元素也使用站点统一的代码字体。 */
+.code-block-wrapper pre,
+.code-block-wrapper pre code,
+.code-block-wrapper .highlight,
+.code-block-wrapper .highlight pre,
+.code-block-wrapper .highlight code {
+    font-family: "Ubuntu Mono", "LXGW WenKai Mono", "Source Code Pro", Consolas, Menlo, monospace !important;
+}
+
 /* 表格同样在底部保留轨道空间，避免遮住最后一行。 */
 .markdown-body table.has-custom-scrollbar {
     padding-bottom: 28px;
@@ -896,6 +905,8 @@ html {
     box-shadow: 0 2px 10px var(--shadow-color);
     opacity: 0;
     pointer-events: none;
+    touch-action: none;
+    user-select: none;
     transition: opacity 0.2s ease;
     box-sizing: border-box;
 }
