@@ -18,9 +18,9 @@ CSS3 动画可以让元素逐渐从一种样式过渡到另一种样式。
 
 你可以逐个设置属性，也可以使用下面的简写形式：
 
-{% highlight css %}
+```css
 animation: [animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction] [animation-fill-mode] [animation-play-state];
-{% endhighlight %}
+```
 
 ## @keyframes
 
@@ -32,7 +32,7 @@ animation: [animation-name] [animation-duration] [animation-timing-function] [an
 
 下面示例创建名为 `changeColor` 的动画，并应用到 `div:hover`：
 
-{% highlight css %}
+```css
 @keyframes changeColor {
   0% {
     background: red;
@@ -48,7 +48,7 @@ animation: [animation-name] [animation-duration] [animation-timing-function] [an
 div:hover{
   animation: changeColor 5s ease .1s;
 }
-{% endhighlight %}
+```
 
 > 在上例中，也可以使用 `from` 表示 `0%`，使用 `to` 表示 `100%`。
 
@@ -128,21 +128,21 @@ div:hover{
 
 示例：
 
-{% highlight css %}
+```css
 div:hover {
   animation-play-state: paused;
 }
-{% endhighlight %}
+```
 
 ## 多个动画
 
 可以为选择器添加多个动画，中间用逗号分隔：
 
-{% highlight css %}
+```css
 div {
   animation: animationA 2s, animationB 2s;
 }
-{% endhighlight %}
+```
 
 ## 参考
 
