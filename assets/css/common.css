@@ -72,14 +72,6 @@
     }
 }
 
-/* Source Han Serif CN Variable Font */
-@font-face {
-    font-family: "Source Han Serif CN VF";
-    src: url("/assets/fonts/SourceHanSerifCN-VF.otf.woff2") format("woff2-variations");
-    font-weight: 100 900;
-    font-display: swap;
-}
-
 /* NewCM10 */
 @font-face {
     font-family: "NewCM10";
@@ -126,7 +118,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: "NewCM10", "Source Han Serif CN VF", 思源宋体, "Source Han Serif", 思源黑体, "Source Han Sans", "MiSans", "Harmony Sans", "OPPO Sans", 微软雅黑, "Microsoft YaHei", "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "NewCM10", "Source Han Sans CN VF", "Source Han Sans", "MiSans", "Harmony Sans", "OPPO Sans", 微软雅黑, "Microsoft YaHei", "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 /* Bootstrap 3 style compatibility for Bootstrap 5 */
@@ -489,14 +481,14 @@ ol, ul, dl {
   clear: both; /* 防止被浮动元素挤压 */
 }
 
-/* Article content headings use serif style */
+/* Article content headings use the template's unified sans-serif style. */
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3,
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-    font-family: "Source Han Serif CN VF", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, Georgia, "Times New Roman", serif;
+    font-family: "Source Han Sans CN VF", "Source Han Sans", "MiSans", "Harmony Sans", "OPPO Sans", 微软雅黑, "Microsoft YaHei", sans-serif;
 }
 /* LaTeX copy button */
 .math-copy {
@@ -882,6 +874,12 @@ html {
 .code-block-wrapper .highlight,
 .code-block-wrapper .highlight pre,
 .code-block-wrapper .highlight code {
+    font-family: "Ubuntu Mono", "Source Han Sans CN VF", monospace !important;
+}
+
+/* 行内代码也明确使用思源黑体显示中文字符。 */
+.markdown-body :not(pre) > code,
+.code-copy-wrap > code {
     font-family: "Ubuntu Mono", "Source Han Sans CN VF", monospace !important;
 }
 
