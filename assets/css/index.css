@@ -1,9 +1,7 @@
 /** Only for index.html **/
 
-/* Banner 渐变：以主题色 --brand-primary (#4183c4) 为基准，
- * 左上角稍浅 (#68a1d9)，右下角稍深 (#3078c0)，135deg 即左上 → 右下。
- * 两端都比主题色略高饱和，避免蓝色发灰显脏；暗端提亮幅度大于浅端，
- * 使整体更亮同时不压掉标题所在区域的对比度。 */
+/* 首页 Banner 使用纯色（无渐变），取原模板 Yummy-Jekyll 的蓝色 #4183c4 (rgb(65,131,196))。
+ * 注意它比主题色 --brand-primary (#337ab7) 更浅、更亮，这是有意为之。 */
 .jumbotron {
-    background: linear-gradient(135deg, #68a1d9 0%, #3078c0 100%);
+    background: #4183c4;
 }
