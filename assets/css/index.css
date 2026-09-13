@@ -1,7 +1,9 @@
 /** Only for index.html **/
 
 /* Banner 渐变：以主题色 --brand-primary (#4183c4) 为基准，
- * 左上角稍浅 (#6399cf)，右下角稍深 (#2e6194)，135deg 即左上 → 右下。 */
+ * 左上角稍浅 (#68a1d9)，右下角稍深 (#3078c0)，135deg 即左上 → 右下。
+ * 两端都比主题色略高饱和，避免蓝色发灰显脏；暗端提亮幅度大于浅端，
+ * 使整体更亮同时不压掉标题所在区域的对比度。 */
 .jumbotron {
-    background: linear-gradient(135deg, #6399cf 0%, #2e6194 100%);
+    background: linear-gradient(135deg, #68a1d9 0%, #3078c0 100%);
 }
