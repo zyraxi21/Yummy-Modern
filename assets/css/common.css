@@ -72,40 +72,7 @@
     }
 }
 
-/* NewCM10 */
-@font-face {
-    font-family: "NewCM10";
-    src: url("/assets/fonts/NewCM10-Book.otf") format("opentype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "NewCM10";
-    src: url("/assets/fonts/NewCM10-BookItalic.otf") format("opentype");
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "NewCM10";
-    src: url("/assets/fonts/NewCM10-Bold.otf") format("opentype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "NewCM10";
-    src: url("/assets/fonts/NewCM10-BoldItalic.otf") format("opentype");
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-}
-
-/* 思源黑体：代码中的中文字符回退字体。 */
+/* 思源黑体：正文与标题的统一样式字体，同时是代码区中文字符的兜底回退。 */
 @font-face {
     font-family: "Source Han Sans CN VF";
     src: url("/assets/fonts/SourceHanSansCN-VF.otf.woff2") format("woff2-variations");
@@ -457,8 +424,8 @@ ol, ul, dl {
  * 为什么必须显式声明到每个后代：正文的通用选择器 `*` 会给每个元素直接声明
  * 正文字体，而 KaTeX 生成的 mrow / mord / vlist / mfrac 等中间层元素自身没有
  * 字体声明，本应从 .katex 继承数学字体；继承被打断后，∂ Δ ∇ 这类取自 main
- * 字族的字符、以及 \mathrm 里的正体字符就落到了正文字体上（正文字体 NewCM10
- * 里同样没有 ∂ Δ ∇，会一路回退到中文正文字体）。
+ * 字族的字符、以及 \mathrm 里的正体字符就落到了正文字体上（正文字体思源黑体
+ * 里同样没有 ∂ Δ ∇，会一路回退到系统默认字体）。
  *
  * KaTeX 自带的字体就够用，不需要外挂别的数学字体：
  *   KaTeX_Main       正体（含 ∂ Δ ∇ Ω ∫ ∞ ≤ 等），\mathrm 与 main 字族用它
@@ -616,33 +583,15 @@ ol, ul, dl {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-/* Ubuntu Mono for code blocks */
+/* 代码字体：更纱黑体 Fixed SC。
+ * 拉丁半角、汉字全角，中英文统一等宽，代码区因此不再需要额外的中文回退字体。
+ * 上游只提供 Regular 一个字重、没有独立斜体：粗体与斜体交给浏览器合成。 */
 @font-face {
-    font-family: "Ubuntu Mono";
-    src: url("/assets/fonts/UbuntuMono-R.ttf") format("truetype");
+    font-family: "Sarasa Fixed SC";
+    src: url("/assets/fonts/SarasaFixedSC-Regular.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
-}
-
-@font-face {
-    font-family: "Ubuntu Mono";
-    src: url("/assets/fonts/UbuntuMono-RI.ttf") format("truetype");
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "Ubuntu Mono";
-    src: url("/assets/fonts/UbuntuMono-B.ttf") format("truetype");
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Ubuntu Mono";
-    src: url("/assets/fonts/UbuntuMono-BI.ttf") format("truetype");
-    font-weight: 700;
-    font-style: italic;
+    font-display: swap;
 }
 
 /* 代码字体：容器本身之外，Rouge 语法高亮还会为每个 token 生成 <span>。
@@ -660,7 +609,7 @@ samp *,
 .highlight *,
 .markdown-body code,
 .markdown-body pre {
-    font-family: "Ubuntu Mono", "Source Han Sans CN VF", monospace;
+    font-family: "Sarasa Fixed SC", "Source Han Sans CN VF", monospace;
 }
 /* Code copy buttons */
 .highlighter-rouge {
@@ -685,7 +634,7 @@ samp *,
 }
 
 .code-lang {
-    font-family: "Ubuntu Mono", "Source Han Sans CN VF", monospace;
+    font-family: "Sarasa Fixed SC", "Source Han Sans CN VF", monospace;
     color: var(--brand-primary-hover);
 }
 
@@ -817,7 +766,7 @@ samp *,
     background: var(--brand-primary-soft);
     border-right: 1px solid var(--brand-primary-border);
     user-select: none;
-    font-family: "Ubuntu Mono", "Source Han Sans CN VF", monospace !important;
+    font-family: "Sarasa Fixed SC", "Source Han Sans CN VF", monospace !important;
     font-size: 85%;
     line-height: 1.45;
 }
@@ -902,13 +851,13 @@ html {
 .code-block-wrapper .highlight,
 .code-block-wrapper .highlight pre,
 .code-block-wrapper .highlight code {
-    font-family: "Ubuntu Mono", "Source Han Sans CN VF", monospace !important;
+    font-family: "Sarasa Fixed SC", "Source Han Sans CN VF", monospace !important;
 }
 
-/* 行内代码也明确使用思源黑体显示中文字符。 */
+/* 行内代码同样使用更纱黑体，中英文字符都在同一套等宽字体里排。 */
 .markdown-body :not(pre) > code,
 .code-copy-wrap > code {
-    font-family: "Ubuntu Mono", "Source Han Sans CN VF", monospace !important;
+    font-family: "Sarasa Fixed SC", "Source Han Sans CN VF", monospace !important;
 }
 
 /* 表格同样在底部保留轨道空间，避免遮住最后一行。 */
