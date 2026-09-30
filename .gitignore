@@ -1,6 +1,6 @@
 _site/
 .jekyll-cache/
-vendor/
+/vendor/
 .bundle/
 node_modules/
 assets/vendor/
@@ -8,3 +8,5 @@ dump.html
 fetched-page.html
 fetched-page2.html
 .workbuddy/
+
+.cache/

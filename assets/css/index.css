@@ -3,5 +3,5 @@
 /* 首页 Banner 使用纯色（无渐变），取原模板 Yummy-Jekyll 的蓝色 #4183c4 (rgb(65,131,196))。
  * 注意它比主题色 --brand-primary (#337ab7) 更浅、更亮，这是有意为之。 */
 .jumbotron {
-    background: #4183c4;
+  background: #4183c4;
 }

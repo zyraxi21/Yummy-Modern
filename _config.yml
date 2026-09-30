@@ -10,10 +10,12 @@ location: # 例如：Nice, France
 company: # 例如：MyCompany
 company_url: # 例如：https://example.com
 github_url: https://github.com/zyraxi21/ # 例如：https://github.com/DONGChuan
-github_username: zyraxi # 例如：DONGChuan
+github_username: # 填写后可运行 npm run fetch:projects 获取公开项目
+github_orgs: [] # 可选组织名称
+social_image: # 可选分享图片，例如 /assets/images/share.png
 description: Yummy Modern 是基于原主题修改的现代化 Jekyll 和 Bootstrap 主题
 favicon: favicon.png # 图片需位于 assets/images
-repository: # 如启用 GitHub metadata，可填写 用户名/仓库名，例如：DONGChuan/DONGChuan.github.io
+repository: # 启用下面的 GitHub metadata 插件时，须填写 用户名/仓库名
 
 # 站点主机与协议
 # 本地测试请使用 http://localhost:4000
@@ -23,19 +25,19 @@ url: http://localhost:4000
 ## Gem
 plugins:
   - jekyll-paginate
-  - jekyll-github-metadata
+  # - jekyll-github-metadata # 按需开启，并填写 repository
 
 # 构建设置
 markdown: kramdown
 highlighter: rouge
-lsi:         false
+lsi: false
 excerpt_separator: "\n\n"
 permalink: /blog/:title.html
 
-source:      .
+source: .
 destination: ./_site
 
-quiet:    false
+quiet: false
 defaults: []
 
 kramdown:
@@ -52,24 +54,19 @@ paginate_path: 'page:num'
 
 # 导航菜单
 navs:
-  -
-    href: /
+  - href: /
     label: 首页
 
-  -
-    href: /open-source
+  - href: /open-source
     label: 开源项目
 
-  -
-    href: /blog
+  - href: /blog
     label: 博客
 
-  -
-    href: /bookmark
+  - href: /bookmark
     label: 书签
 
-  -
-    href: /about
+  - href: /about
     label: 关于
 
 # 侧边栏热门仓库数量
@@ -78,8 +75,45 @@ side_bar_repo_limit: 5 # 要显示的仓库数量
 # 关于页面技能关键词，可自由修改
 skill_software_keywords: [Java, C, C++, Qt, Python, MySQL, Oracle, SQLite, PL/SQL, 设计模式]
 skill_j2ee_keywords: [Spring, Struct, Hibernet, MyBatis, JSP]
-skill_web_keywords: [HTML, CSS, JS, JQuery, Ajax, AngularJS, NodeJS, ExpressJS, MongoDB, Redis, PHP, Symfony, Bootstrap]
+skill_web_keywords:
+  [
+    HTML,
+    CSS,
+    JS,
+    JQuery,
+    Ajax,
+    AngularJS,
+    NodeJS,
+    ExpressJS,
+    MongoDB,
+    Redis,
+    PHP,
+    Symfony,
+    Bootstrap,
+  ]
 skill_mobile_app_keywords: [Android, Sketch UI 设计]
 
 layout: default
 comments: true
+
+# 通用部署与构建配置
+lang: zh-Hans-CN
+baseurl: '' # 项目站点可填 /仓库名
+timezone: Asia/Shanghai
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - src
+  - scripts
+  - tests
+  - docs
+  - package.json
+  - package-lock.json
+  - eslint.config.mjs
+  - README.md
+  - CHANGES.md
+  - dump.html
+  - fetched-page.html
+  - fetched-page2.html

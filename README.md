@@ -23,26 +23,26 @@ Yummy Modern 是基于原主题修改、现代化并重新分发的 Jekyll 主�
 
 ## 主要功能
 
-* 兼容 Jekyll 3.x/4.x 和 GitHub Pages
-* 基于 Bootstrap 5（由原始 Bootstrap 3 升级）
-* 保留开源项目页和侧边栏模块；支持 GitHub metadata 自动加载，填写配置后生效
-* 支持可配置的 Disqus 评论；未填写 `disque` 时不会加载
-* 时间线形式的博客列表
-* 收藏常用库、工具和书籍的书签页面
-* 自动根据文章标题生成文章目录
-* 支持代码复制、KaTeX 公式和 Mermaid 图表
+- 基于 Jekyll 4.4，通过 GitHub Actions 构建并部署到 GitHub Pages
+- 基于 Bootstrap 5（由原始 Bootstrap 3 升级）
+- 保留开源项目页和侧边栏模块；支持按配置获取公开项目或启用 GitHub metadata
+- 支持可配置的 Disqus 评论；未填写 `disque` 时不会加载
+- 时间线形式的博客列表
+- 收藏常用库、工具和书籍的书签页面
+- 自动根据文章标题生成文章目录
+- 支持代码复制、KaTeX 公式和 Mermaid 图表
 
 ## 安装与配置
 
-在本地使用前，需要安装 [Bundler](http://bundler.io/) 和 Node.js。
+环境要求：Node.js 22.13+（推荐 24）、npm 10+、Ruby 3.4+ 和 [Bundler](https://bundler.io/)。
 
 1. Fork 本项目并克隆到本地
-2. 运行 `npm install` 安装前端依赖
+2. 运行 `npm ci` 安装前端依赖
 3. 运行 `npm run build` 构建前端静态资源
 4. 运行 `bundle install` 安装 Jekyll 依赖
 5. 修改 `_config.yml` 中的站点设置
 6. 在 `/_posts` 中添加文章
-7. 提交到自己的 GitHub Pages 仓库
+7. 在仓库 Settings → Pages 中将 Source 设为 GitHub Actions，然后提交到自己的仓库
 
 本地预览：
 
@@ -95,7 +95,9 @@ tags: [标签1, 标签2]
 
 #### 开源项目模块
 
-开源项目模块会自动获取 GitHub 仓库信息。在 `_config.yml` 中填写 `repository` 后启用；留空时不加载。
+在 `_config.yml` 中填写 `github_username` 或 `github_orgs`，运行 `npm run fetch:projects` 可生成 `_data/projects.json`；项目列表优先读取这份数据。也可通过 `projects` 配置静态列表。
+
+如需使用 GitHub metadata，将 `jekyll-github-metadata` 加入 `plugins`，并填写 `repository: 用户名/仓库名`。模板默认关闭此插件，使未配置仓库身份的生产构建也能完成；插件在生产环境需要明确的仓库身份，参见 [官方配置说明](https://github.com/jekyll/github-metadata/blob/main/docs/configuration.md)。
 
 #### Disqus 评论
 
@@ -113,12 +115,12 @@ tags: [标签1, 标签2]
 
 原始模板贡献者：
 
-* [DONGChuan](https://github.com/DONGChuan)
-* [Mojtaba Koosej](https://github.com/mkoosej)
-* [shahsaurabh0605](https://github.com/shahsaurabh0605)
-* [Z-Beatles](http://www.waynechu.cn/)
-* [LM450N](https://github.com/LM450N)
-* [XhmikosR](https://github.com/XhmikosR)
+- [DONGChuan](https://github.com/DONGChuan)
+- [Mojtaba Koosej](https://github.com/mkoosej)
+- [shahsaurabh0605](https://github.com/shahsaurabh0605)
+- [Z-Beatles](http://www.waynechu.cn/)
+- [LM450N](https://github.com/LM450N)
+- [XhmikosR](https://github.com/XhmikosR)
 
 ## 许可证
 
@@ -127,3 +129,35 @@ tags: [标签1, 标签2]
 原始版权：Copyright (c) 2016 DONG Chuan
 
 详细内容见 [LICENSE](LICENSE)、[NOTICE](NOTICE) 和 [CHANGES.md](CHANGES.md)。
+
+## 代码规范与检查
+
+编辑源码后可运行以下命令；前端构建产物位于 `assets/vendor/`，由构建脚本生成：
+
+```bash
+npm run format       # 格式化 JavaScript、CSS、Liquid 模板与配置
+npm run check        # ESLint、Prettier、JavaScript 与数学插件回归检查
+npm run build
+bundle exec jekyll build --strict_front_matter
+npm run check:site   # 检查本地链接、资源及发布目录
+```
+
+子目录部署请设置 `_config.yml` 的 `baseurl`，例如 `/my-blog`，并使用对应路径验证：
+
+```bash
+bundle exec jekyll build --baseurl /preview --destination .cache/preview
+npm run check:site -- --site .cache/preview --baseurl /preview
+```
+
+仓库已提供代码质量和 GitHub Pages 部署工作流。竖屏使用可展开导航菜单；文章目录在窄屏中位于正文前并默认折叠，博客分类显示为可换行的筛选按钮。
+
+浏览器回归检查需要 Python 3.9+ 与 Playwright，覆盖复制、公式、图表、分类、目录、导航及 320–768px 竖屏布局：
+
+```bash
+python -m pip install playwright==1.63.0
+python -m playwright install chromium
+python tests/browser_smoke.py
+# 使用已安装的 Chrome 时：python tests/browser_smoke.py --browser-channel chrome
+```
+
+规范约定、修改范围和检查结果见 [代码检查记录](docs/CODE_QUALITY.md)。
