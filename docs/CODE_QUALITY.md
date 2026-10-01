@@ -23,6 +23,7 @@
 | 开发源码和抓取页面可能进入发布目录                            | 明确排除并检查生成目录                                             |
 | 缺少一致的编码、格式、检查入口                                | UTF-8 / LF / 两空格；ESLint、Prettier（含 Liquid）及 npm run check |
 | 模板未填写仓库身份时，生产构建触发 GitHub Metadata 异常       | 模板默认按需开启此插件；启用时同时配置 repository                  |
+| 可选 GitHub metadata 的实时请求可能因网络或 TLS 错误失败      | 默认关闭插件，构建读取本地项目数据；开启前说明联网要求             |
 | 部署缺少构建结果检查                                          | 加入严格 Jekyll 构建、生成站点检查及独立质量工作流                 |
 
 第三方 GeoPattern 文件保持原内容，移到 src/vendor；不格式化第三方源码。生成资源位于 assets/vendor，由构建脚本重建。文章内容不参加自动格式化。

@@ -216,6 +216,8 @@ Jekyll 在 Markdown 转换后使用 KaTeX 预渲染公式，并生成供辅助�
 
 如需使用 GitHub metadata，将 `jekyll-github-metadata` 加入 `plugins`，并填写 `repository: 用户名/仓库名`。模板默认关闭此插件，使未配置仓库身份的生产构建也能完成；插件在生产环境需要明确的仓库身份，参见 [官方配置说明](https://github.com/jekyll/github-metadata/blob/main/docs/configuration.md)。
 
+开启插件后，构建会访问 GitHub API；网络或 TLS 错误可能使 Jekyll 启动失败。只需展示项目列表时，保留默认关闭状态，使用已生成的 `_data/projects.json` 或 `projects` 配置即可。更新项目时运行 `npm run fetch:projects`，获取完成后无需联网即可构建和预览。修改插件配置后重新启动 Jekyll。
+
 ### Disqus 评论
 
 在 `_config.yml` 中填写 `disque` 后，首页、博客和文章页会加载 Disqus 评论；留空时不加载。

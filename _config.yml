@@ -24,7 +24,7 @@ url: https://zyraxi21.github.io
 ## Gem
 plugins:
   - jekyll-paginate
-  # - jekyll-github-metadata # 按需开启，并填写 repository
+  # - jekyll-github-metadata # 按需开启，填写 repository 并确保可访问 GitHub API
 
 # 构建设置
 markdown: kramdown
