@@ -3,11 +3,13 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-# Optional deployment for sites created from this template.
-# Enable GitHub Pages before starting this workflow manually.
-name: Deploy Jekyll site to Pages (manual)
+# Deploy the demo and sites created from this template.
+# Enable GitHub Pages with the GitHub Actions source before pushing to main.
+name: Deploy Jekyll site to Pages
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:

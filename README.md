@@ -42,11 +42,20 @@ Yummy Modern 是基于原主题修改、现代化并重新分发的 Jekyll 主�
 4. 运行 `bundle install` 安装 Jekyll 依赖
 5. 按下方“站点设置”说明修改 `_config.yml`
 6. 在 `/_posts` 中添加文章
-7. 提交到自己的仓库，并按“使用方法”中的“部署到 GitHub Pages”手动部署
+7. 按“使用方法”中的“部署到 GitHub Pages”启用 Pages，再推送到 `main` 分支自动部署
 
 ### 站点设置
 
 `_config.yml` 使用 YAML 格式。保留字段名和缩进，只修改冒号后的值；暂时不用的可选功能可以留空。
+
+**使用模板前，必须先把以下演示站配置改成自己的站点地址和仓库子目录：**
+
+```yaml
+url: https://zyraxi21.github.io
+baseurl: '/Yummy-Modern'
+```
+
+这组默认值用于本主题的演示站。你的 `url` 应填写自己的域名；普通项目仓库的 `baseurl` 填 `/你的仓库名`，部署到域名根目录时填 `''`。具体示例见下文。
 
 | 字段                      | 用途与填法                                                                 |
 | ------------------------- | -------------------------------------------------------------------------- |
@@ -103,18 +112,20 @@ baseurl: '/my-blog'
 bundle exec jekyll serve
 ```
 
-访问 `http://localhost:4000` 即可查看。
+默认配置下访问 `http://localhost:4000/Yummy-Modern/`。修改 `baseurl` 后，本地预览地址也使用对应子目录；`baseurl: ''` 时访问 `http://localhost:4000/`。
 
 ## 使用方法
 
 ### 部署到 GitHub Pages
 
-1. 在 `_config.yml` 中填写正式网站的 `url` 和 `baseurl`，提交并推送到自己的仓库。
-2. 在仓库 Settings → Pages 中将 Source 设为 GitHub Actions。
-3. 在 Actions 中选择 `Deploy Jekyll site to Pages (manual)`，点击 `Run workflow`，选择 `main` 分支并运行。
+1. 在 `_config.yml` 中将演示站的 `url` 和 `baseurl` 替换为自己的正式网站配置，并提交修改。
+2. 在仓库 Settings → Pages 中将 Source 设为 GitHub Actions。必须先完成这一步，再触发部署。
+3. 推送到 `main` 分支，`Deploy Jekyll site to Pages` 工作流会自动构建并部署。
 4. 工作流完成后，在 Settings → Pages 中查看网站地址。
 
-部署工作流会安装依赖、构建前端资源、严格构建 Jekyll，并发布到 Pages。每次更新网站后都需要再次手动运行；push 和 pull request 自动执行代码质量与构建检查。
+部署工作流会安装依赖、构建前端资源、严格构建 Jekyll，并发布到 Pages。后续推送到 `main` 都会自动部署；也可以在 Actions 中选择 `Deploy Jekyll site to Pages` → `Run workflow` 手动重建。pull request 执行代码质量与构建检查。
+
+如果尚未启用 Pages，部署会在 `configure-pages` 步骤失败；修改 `url` 和 `baseurl` 不会代替仓库的 Pages 设置。发布来源的配置方式见 [GitHub 官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。
 
 如果部署到子目录，例如 `/my-blog`，可先在本地使用相同路径验证：
 
@@ -216,18 +227,20 @@ npm run format       # 格式化 JavaScript、CSS、Liquid 模板与配置
 npm run check        # ESLint、Prettier、JavaScript 与数学插件回归检查
 npm run build
 bundle exec jekyll build --strict_front_matter
-npm run check:site   # 检查本地链接、资源及发布目录
+npm run check:site   # 按 _config.yml 的 baseurl 检查本地链接、资源及发布目录
 ```
 
 竖屏使用带动画的导航侧栏；文章目录通过右下角的浮动玻璃按钮打开，博客分类显示为可换行的筛选按钮。
 
 浏览器回归检查需要 Python 3.9+ 与 Playwright，覆盖复制、公式、图表、分类、目录、导航及 320–768px 竖屏布局：
 
+以下命令使用演示站默认的 `baseurl`；修改配置后请换成自己的值。根目录部署时可省略 `--baseurl`。
+
 ```bash
 python -m pip install playwright==1.63.0
 python -m playwright install chromium
-python tests/browser_smoke.py
-# 使用已安装的 Chrome 时：python tests/browser_smoke.py --browser-channel chrome
+python tests/browser_smoke.py --baseurl /Yummy-Modern
+# 使用已安装的 Chrome 时，再添加 --browser-channel chrome
 ```
 
 规范约定、修改范围和检查结果见 [代码检查记录](docs/CODE_QUALITY.md)。

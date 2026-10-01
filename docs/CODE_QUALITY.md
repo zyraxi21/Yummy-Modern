@@ -90,7 +90,7 @@
 
 - 手机导航关闭按钮改为无边框叉号，保留 44px 触摸区域及“关闭导航菜单”的无障碍名称。移除面板标题分隔线和侧栏边框；选中导航项使用带主题色的半透明模糊背景。
 - 锁文件中的 DOMPurify 由 3.4.14 更新到修复版 3.4.16，处理 [GHSA-p98j-92pf-mc4p](https://github.com/advisories/GHSA-p98j-92pf-mc4p)。Mermaid 仍为 11.17.2；npm audit 返回 0 项漏洞。
-- 本模板 Pages 工作流已移除 push 触发，仅保留 workflow_dispatch；push 和 pull request 仍进行质量与构建检查。手动部署需要先在 Settings → Pages 配置 GitHub Actions，再在 Actions 中执行 `Deploy Jekyll site to Pages (manual)`。
+- 本模板 Pages 工作流在 main 分支 push 时自动构建并部署，同时保留 workflow_dispatch 手动入口；pull request 进行质量与构建检查。首次部署前必须在 Settings → Pages 中将 Source 设为 GitHub Actions，操作步骤见 README。
 
 规范检查、前端构建、根路径与 /preview 严格构建和资源检查、/preview 浏览器回归均通过。浏览器验证图表渲染与复制、侧栏动画和焦点、图标关闭入口及 320–768px 竖屏布局；工作流事件也已复核。
 
@@ -110,6 +110,8 @@ npm run check
 npm run build
 bundle exec jekyll build --strict_front_matter
 npm run check:site
+bundle exec jekyll build --strict_front_matter --baseurl='' --destination .cache/root
+npm run check:site -- --site .cache/root --baseurl=''
 bundle exec jekyll build --strict_front_matter --baseurl /preview --destination .cache/preview
 npm run check:site -- --site .cache/preview --baseurl /preview
 python -m pip install playwright==1.63.0
@@ -120,6 +122,10 @@ python tests/browser_smoke.py --site .cache/preview --baseurl /preview
 浏览器检查使用仓库自带的演示文章，不依赖最新文章排序。更换演示内容后，可用 --post blog/新示例.html 指定包含代码、公式和 Mermaid 的页面。
 
 更新依赖时通过锁文件固定实际版本，再执行以上检查。此次保留 Bootstrap 5、KaTeX 0.16、Mermaid 11 的主要版本，避免依赖升级改变已有文章的呈现。
+
+### 演示站项目部署
+
+模板的默认配置用于演示站项目子目录；使用模板前须按 README 修改为自己的地址。资源检查默认读取 `_config.yml` 的 `baseurl`，也可通过 `--baseurl` 覆盖。质量工作流分别检查配置路径、根目录及 /preview 子目录，浏览器检查覆盖演示站子目录的导航、资源与移动端交互。
 
 ## 规范依据
 

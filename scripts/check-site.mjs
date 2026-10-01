@@ -2,13 +2,15 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, extname, join, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
+import { parse } from 'yaml';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const { values } = parseArgs({
-  options: { site: { type: 'string', default: '_site' }, baseurl: { type: 'string', default: '' } },
+  options: { site: { type: 'string', default: '_site' }, baseurl: { type: 'string' } },
 });
 const site = resolve(root, values.site);
-const baseurl = values.baseurl.replace(/\/$/, '');
+const config = parse(readFileSync(join(root, '_config.yml'), 'utf8'));
+const baseurl = (values.baseurl ?? config.baseurl ?? '').replace(/\/$/, '');
 const errors = [];
 let checked = 0;
 

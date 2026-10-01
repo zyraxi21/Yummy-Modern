@@ -2,7 +2,7 @@
 # This file has been modified from the original project and is distributed
 # under the Apache License, Version 2.0.
 
-# 站点设置（模板示例值，请按需修改）
+# 站点设置（演示站配置，使用模板前请按 README 改为自己的站点设置）
 title: Yummy Modern 主题 # 例如：我的名字
 name: Yummy Modern # 例如：DONGChuan
 email: your_email@example.com # 例如：your_email@example.com
@@ -18,9 +18,8 @@ favicon: favicon.png # 图片需位于 assets/images
 repository: # 启用下面的 GitHub metadata 插件时，须填写 用户名/仓库名
 
 # 站点主机与协议
-# 本地测试请使用 http://localhost:4000
-# 生产环境请使用 GitHub Pages 地址，例如 http://dongchuan.github.io
-url: http://localhost:4000
+# 使用模板前改为自己的域名；不要在 url 中重复添加 baseurl
+url: https://zyraxi21.github.io
 
 ## Gem
 plugins:
@@ -98,7 +97,7 @@ comments: true
 
 # 通用部署与构建配置
 lang: zh-Hans-CN
-baseurl: '' # 项目站点可填 /仓库名
+baseurl: '/Yummy-Modern' # 演示站子目录；使用模板前改为 /自己的仓库名，根目录部署填 ''
 timezone: Asia/Shanghai
 exclude:
   - Gemfile

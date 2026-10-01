@@ -28,10 +28,17 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
-      - name: Build and validate root deployment
+      - name: Build and validate configured deployment
         run: |
           bundle exec jekyll build --strict_front_matter
           npm run check:site
+        env:
+          JEKYLL_ENV: production
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+      - name: Build and validate root deployment
+        run: |
+          bundle exec jekyll build --strict_front_matter --baseurl="" --destination .cache/root
+          npm run check:site -- --site .cache/root --baseurl=""
         env:
           JEKYLL_ENV: production
           JEKYLL_GITHUB_TOKEN: ${{ github.token }}
