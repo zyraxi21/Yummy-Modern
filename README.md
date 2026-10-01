@@ -200,7 +200,7 @@ tags: [标签1, 标签2]
 
 代码中的英文优先使用 Ubuntu Mono，中文回退到 LXGW Bright Code GB。代码块、行内代码、行号与语言标签使用同一组合；两种字体都使用 Regular 文件，粗体与斜体由浏览器合成。
 
-字体文件位于 `assets/fonts/UbuntuMono-R.ttf` 和 `assets/fonts/LXGWBrightCodeGB-Regular.ttf`，样式声明位于 `assets/css/common.css`。
+网页加载 `assets/fonts/UbuntuMono-R.woff2` 和 `assets/fonts/LXGWBrightCodeGB-Regular.woff2`，同目录保留 TTF 原文件。替换代码字体时，请同步更新对应的 WOFF2 文件或 `assets/css/common.css` 中的字体声明。
 
 ### 开源项目模块
 
