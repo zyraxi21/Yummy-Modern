@@ -3,13 +3,11 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll site to Pages
+# Optional deployment for sites created from this template.
+# Enable GitHub Pages before starting this workflow manually.
+name: Deploy Jekyll site to Pages (manual)
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:

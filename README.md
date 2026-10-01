@@ -149,7 +149,9 @@ bundle exec jekyll build --baseurl /preview --destination .cache/preview
 npm run check:site -- --site .cache/preview --baseurl /preview
 ```
 
-仓库已提供代码质量和 GitHub Pages 部署工作流。竖屏使用带动画的导航侧栏；文章目录通过右下角的浮动玻璃按钮打开，博客分类显示为可换行的筛选按钮。
+仓库的 push 和 pull request 只触发代码质量与构建检查。GitHub Pages 部署工作流仅供手动使用：先在仓库 Settings → Pages 中启用 Pages，并将构建来源设为 GitHub Actions，再在 Actions 中选择 `Deploy Jekyll site to Pages (manual)` → `Run workflow`。模板仓库不会随 push 自动部署。
+
+竖屏使用带动画的导航侧栏；文章目录通过右下角的浮动玻璃按钮打开，博客分类显示为可换行的筛选按钮。
 
 浏览器回归检查需要 Python 3.9+ 与 Playwright，覆盖复制、公式、图表、分类、目录、导航及 320–768px 竖屏布局：
 
