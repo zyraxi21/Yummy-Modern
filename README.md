@@ -196,6 +196,12 @@ tags: [标签1, 标签2]
 
 如果不想要文章目录，可以在 Front Matter 中设置 **no-post-nav: true**。
 
+### 代码字体
+
+代码中的英文优先使用 Ubuntu Mono，中文回退到 LXGW Bright Code GB。代码块、行内代码、行号与语言标签使用同一组合；两种字体都使用 Regular 文件，粗体与斜体由浏览器合成。
+
+字体文件位于 `assets/fonts/UbuntuMono-R.ttf` 和 `assets/fonts/LXGWBrightCodeGB-Regular.ttf`，样式声明位于 `assets/css/common.css`。
+
 ### 开源项目模块
 
 在 `_config.yml` 中填写 `github_username` 或 `github_orgs`，运行 `npm run fetch:projects` 可生成 `_data/projects.json`；项目列表优先读取这份数据。也可通过 `projects` 配置静态列表。

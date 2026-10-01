@@ -74,7 +74,7 @@
   }
 }
 
-/* 思源黑体：正文与标题的统一样式字体，同时是代码区中文字符的兜底回退。 */
+/* 思源黑体：正文与标题的统一样式字体。 */
 @font-face {
   font-family: 'Source Han Sans CN VF';
   src: url('../fonts/SourceHanSansCN-VF.otf.woff2') format('woff2-variations');
@@ -82,6 +82,15 @@
   font-style: normal;
   font-display: swap;
   unicode-range: U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FF00-FFEF;
+}
+
+/* LXGW Bright Code GB：代码中的中文字符回退字体。 */
+@font-face {
+  font-family: 'LXGW Bright Code GB';
+  src: url('../fonts/LXGWBrightCodeGB-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* 正文字体：英文与中文统一使用思源黑体。
@@ -602,12 +611,12 @@ dl {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-/* 代码字体：更纱黑体 Fixed SC。
- * 拉丁半角、汉字全角，中英文统一等宽，代码区因此不再需要额外的中文回退字体。
- * 上游只提供 Regular 一个字重、没有独立斜体：粗体与斜体交给浏览器合成。 */
+/* Ubuntu Mono for code blocks
+ * 仓库只保留 Regular（RI/B/BI 已移除）：需要加粗或倾斜时，由浏览器基于 400
+ * 合成，这样代码仍然留在 Ubuntu Mono，而不是掉到后面的中文回退字体上。 */
 @font-face {
-  font-family: 'Sarasa Fixed SC';
-  src: url('../fonts/SarasaFixedSC-Regular.woff2') format('woff2');
+  font-family: 'Ubuntu Mono';
+  src: url('../fonts/UbuntuMono-R.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -628,7 +637,7 @@ samp *,
 .highlight *,
 .markdown-body code,
 .markdown-body pre {
-  font-family: 'Sarasa Fixed SC', 'Source Han Sans CN VF', monospace;
+  font-family: 'Ubuntu Mono', 'LXGW Bright Code GB', monospace;
 }
 /* Code copy buttons */
 .highlighter-rouge {
@@ -653,7 +662,7 @@ samp *,
 }
 
 .code-lang {
-  font-family: 'Sarasa Fixed SC', 'Source Han Sans CN VF', monospace;
+  font-family: 'Ubuntu Mono', 'LXGW Bright Code GB', monospace;
   color: var(--brand-primary-hover);
 }
 
@@ -791,7 +800,7 @@ samp *,
   background: var(--brand-primary-soft);
   border-right: 1px solid var(--brand-primary-border);
   user-select: none;
-  font-family: 'Sarasa Fixed SC', 'Source Han Sans CN VF', monospace !important;
+  font-family: 'Ubuntu Mono', 'LXGW Bright Code GB', monospace !important;
   font-size: var(--code-font-size);
   line-height: var(--code-line-height);
 }
@@ -886,13 +895,13 @@ html {
 .code-block-wrapper .highlight,
 .code-block-wrapper .highlight pre,
 .code-block-wrapper .highlight code {
-  font-family: 'Sarasa Fixed SC', 'Source Han Sans CN VF', monospace !important;
+  font-family: 'Ubuntu Mono', 'LXGW Bright Code GB', monospace !important;
 }
 
-/* 行内代码同样使用更纱黑体，中英文字符都在同一套等宽字体里排。 */
+/* 行内代码与代码块使用同一套中英文代码字体。 */
 .markdown-body :not(pre) > code,
 .code-copy-wrap > code {
-  font-family: 'Sarasa Fixed SC', 'Source Han Sans CN VF', monospace !important;
+  font-family: 'Ubuntu Mono', 'LXGW Bright Code GB', monospace !important;
 }
 
 /* 表格同样在底部保留轨道空间，避免遮住最后一行。 */
