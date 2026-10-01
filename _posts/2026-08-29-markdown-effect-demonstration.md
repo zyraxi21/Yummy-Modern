@@ -36,14 +36,11 @@ excerpt: "Markdown 元素效果展示，包括代码、公式、表格和流程�
 set -euo pipefail
 
 PORT="${PORT:-4000}"
-REPO_DIR="${HOME}/source/website"
+REPO_DIR="${REPO_DIR:-.}"
 
-for site in Yummy-Modern zyraxi21.github.io; do
-    ( cd "${REPO_DIR}/${site}" && jekyll build ) || exit 1
-done
-
-npx @deepseek-ai/dsh web --port "$PORT"
-echo "预览已启动：http://127.0.0.1:${PORT}"
+cd "$REPO_DIR"
+npm run build
+bundle exec jekyll serve --port "$PORT"
 ```
 
 ## PowerShell

@@ -1,12 +1,4 @@
-import {
-  existsSync,
-  mkdirSync,
-  mkdtempSync,
-  readFileSync,
-  renameSync,
-  rmSync,
-  writeFileSync,
-} from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
@@ -20,11 +12,8 @@ mkdirSync(cacheDir, { recursive: true });
 const outputDir = mkdtempSync(join(cacheDir, 'assets-'));
 
 try {
-  const entryPoints = { app: join(root, 'src', 'js', 'main.js') };
-  const donateEntry = join(root, 'src', 'js', 'donate.js');
-  if (existsSync(donateEntry)) entryPoints.donate = donateEntry;
   await build({
-    entryPoints,
+    entryPoints: { app: join(root, 'src', 'js', 'main.js') },
     outdir: outputDir,
     bundle: true,
     splitting: true,
