@@ -100,6 +100,7 @@ lang: zh-Hans-CN
 baseurl: '/Yummy-Modern' # 演示站子目录；使用模板前改为 /自己的仓库名，根目录部署填 ''
 timezone: Asia/Shanghai
 exclude:
+  - .cache
   - Gemfile
   - Gemfile.lock
   - node_modules
