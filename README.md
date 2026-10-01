@@ -31,6 +31,7 @@ Yummy Modern 是基于原主题修改、现代化并重新分发的 Jekyll 主�
 - 收藏常用库、工具和书籍的书签页面
 - 自动根据文章标题生成文章目录
 - 支持代码复制、KaTeX 公式和 Mermaid 图表
+- 顶栏全站搜索：实时预览、标题与正文检索、高亮及分页结果
 
 ## 安装与配置
 
@@ -134,6 +135,20 @@ bundle exec jekyll build --strict_front_matter --baseurl /my-blog --destination 
 npm run check:site -- --site .cache/preview --baseurl /my-blog
 ```
 
+### 全站搜索
+
+点击顶栏导航左侧的放大镜展开搜索框，输入关键词后实时显示最多 5 条结果。点击列表项直接打开对应页面；按回车或再次点击放大镜进入完整搜索页。支持上下方向键选择结果、回车打开及 Escape 收起。
+
+搜索覆盖文章和独立页面的标题、标签、分类及正文，优先显示标题和标签匹配的结果。多个关键词用空格分隔，结果须包含全部关键词。完整结果每页 10 条，并高亮匹配文字；搜索页 URL 的 `q` 和 `page` 参数保留关键词与页码，方便分享与重新打开。
+
+索引由 Jekyll 构建自动生成，首次打开搜索时才加载，无需配置外部服务。新增或修改内容后重新构建即可更新；不希望被搜索到的文章或页面，可在 Front Matter 中加入：
+
+```yaml
+search: false
+```
+
+搜索路径会自动使用 `_config.yml` 中的 `baseurl`，支持根目录与普通项目仓库部署。
+
 ### 新建文章
 
 在 `_posts` 文件夹中创建以标准 Jekyll 格式命名的 `.md` 文件：
@@ -224,7 +239,7 @@ tags: [标签1, 标签2]
 
 ```bash
 npm run format       # 格式化 JavaScript、CSS、Liquid 模板与配置
-npm run check        # ESLint、Prettier、JavaScript 与数学插件回归检查
+npm run check        # ESLint、Prettier、JavaScript、数学与搜索索引回归检查
 npm run build
 bundle exec jekyll build --strict_front_matter
 npm run check:site   # 按 _config.yml 的 baseurl 检查本地链接、资源及发布目录
@@ -232,7 +247,7 @@ npm run check:site   # 按 _config.yml 的 baseurl 检查本地链接、资源�
 
 竖屏使用带动画的导航侧栏；文章目录通过右下角的浮动玻璃按钮打开，博客分类显示为可换行的筛选按钮。
 
-浏览器回归检查需要 Python 3.9+ 与 Playwright，覆盖复制、公式、图表、分类、目录、导航及 320–768px 竖屏布局：
+浏览器回归检查需要 Python 3.9+ 与 Playwright，覆盖搜索、复制、公式、图表、分类、目录、导航及 320–768px 竖屏布局：
 
 以下命令使用演示站默认的 `baseurl`；修改配置后请换成自己的值。根目录部署时可省略 `--baseurl`。
 

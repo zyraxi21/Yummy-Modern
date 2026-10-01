@@ -43,7 +43,7 @@
 
 | 检查                         | 结果 / 范围                                                                                                |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| npm run check                | ESLint、Prettier、5 项 Node 测试和 12 项 Ruby 回归均通过                                                   |
+| npm run check                | ESLint、Prettier、11 项 Node 测试和 18 项 Ruby 回归均通过                                                  |
 | npm run build                | 前端构建通过，无构建警告                                                                                   |
 | Jekyll 严格构建与 check:site | 根路径构建与本地引用检查通过                                                                               |
 | /preview 子目录              | 严格构建、本地引用及浏览器检查均通过                                                                       |
@@ -101,6 +101,14 @@
 - 文章的 `#` 至 `######` 分别对应 h1 至 h6，目录完整收录六级标题，逐级缩进；桌面侧栏与手机浮动目录使用相同的层级。手机目录条目的左侧竖线保持隐藏。
 - 浏览器回归覆盖六级标题的顺序、锚点、缩进，以及手机端点击后关闭面板并聚焦标题。
 
+### 全站搜索
+
+- 顶栏放大镜位于导航左侧。展开时文本框向左包住图标，图标位置保持不变；输入后预览最多 5 条结果，点击条目直接跳转，回车或再次点击图标查看完整结果。
+- 搜索页使用主题现有的横幅、字体、蓝色配色和列表间距。结果含类型、日期、标签与正文片段，提供匹配高亮、每页 10 条结果、空状态及重试入口。
+- Jekyll 在渲染后生成索引，收录公开文章和独立页面；文章摘要不包含布局和目录，排除搜索页、分页副本及 `search: false` 内容。根目录、演示站项目子目录和测试子目录均使用对应 `baseurl`。
+- 首次打开搜索才请求索引，不增加外部服务或前端依赖。检索支持中文、大小写和全半角规范化，多个关键词须全部匹配；查询与片段以文本节点呈现。
+- 回归检查覆盖检索排序、Unicode 高亮、索引过滤、图标位置、展开动画、上下键与 Escape、输入法、跳转、异常查询、重试、分页恢复及浅深色 320–768px 布局。
+
 ### 常用检查命令
 
 ```bash
@@ -130,6 +138,7 @@ python tests/browser_smoke.py --site .cache/preview --baseurl /preview
 ## 规范依据
 
 - [Jekyll URL 与转义过滤器](https://jekyllrb.com/docs/liquid/filters/)
+- [WAI-ARIA 可编辑组合框交互](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)
 - [kramdown 标题语法](https://kramdown.gettalong.org/syntax.html#atx-style)
 - [ESLint 配置文件](https://eslint.org/docs/latest/use/configure/configuration-files)
 - [esbuild 代码分割](https://esbuild.github.io/api/#splitting)
