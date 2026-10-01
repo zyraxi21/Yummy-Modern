@@ -206,7 +206,19 @@ Jekyll 在 Markdown 转换后使用 KaTeX 预渲染公式，并生成供辅助�
 
 代码中的英文优先使用 Ubuntu Mono，中文回退到 LXGW Bright Code GB。代码块、行内代码、行号与语言标签使用同一组合；两种字体都使用 Regular 文件，粗体与斜体由浏览器合成。
 
-网页加载 `assets/fonts/UbuntuMono-R.woff2` 和 `assets/fonts/LXGWBrightCodeGB-Regular.woff2`，同目录保留 TTF 原文件。替换代码字体时，请同步更新对应的 WOFF2 文件或 `assets/css/common.css` 中的字体声明。
+Ubuntu Mono 加载 `assets/fonts/UbuntuMono-R.woff2`；LXGW Bright Code GB 与正文思源黑体按字符加载网页分片。`assets/css/fonts.css` 中的分片声明合并进现有样式包，所有原有字符仍可显示，新增文章无需重新生成字体；完整字体与 TTF 源文件保留在 `assets/fonts/`。
+
+更换源字体，或希望将新文章中的常用字符集中加载时，可重新生成分片。此步骤需要 Python、FontTools 和 Node，日常构建与部署直接使用已提交的分片：
+
+```bash
+python -m pip install fonttools==4.63.0
+bundle exec jekyll build
+python scripts/build-font-subsets.py
+npm run build
+npm run check:fonts
+```
+
+分片配置位于 `scripts/font-subsets.json`，正文仍只对原有中文字符范围使用思源黑体，西文样式保持原方案。思源网页分片采用独立内部名称，以遵守原字体的保留名称要求；字形与字重沿用原字体。授权记录见 [字体说明](assets/fonts/FONT-NOTICES.md)。
 
 ### 开源项目模块
 

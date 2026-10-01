@@ -74,34 +74,13 @@
   }
 }
 
-/* 思源黑体：正文与标题的统一样式字体。 */
-@font-face {
-  font-family: 'Source Han Sans CN VF';
-  src: url('../fonts/SourceHanSansCN-VF.otf.woff2') format('woff2-variations');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FF00-FFEF;
-}
-
-/* LXGW Bright Code GB：代码中的中文字符回退字体。 */
-@font-face {
-  font-family: 'LXGW Bright Code GB';
-  src: url('../fonts/LXGWBrightCodeGB-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* 正文字体：英文与中文统一使用思源黑体。
- * 之前把 NewCM10 放在首位，是为了让公式里 \mathrm 等正体字符回退到正文时
- * 仍与数学字体风格一致；现在公式已改用 KaTeX 自带字体（见下方“数学字体”一节），
- * 不再需要这个折中，正文因此可以直接与中文统一。 */
+/* 中文使用思源黑体的网页分片，西文继续使用后续系统字体。
+ * 字符范围在 fonts.css 中保留，避免字体加载优化改变西文样式。 */
 * {
   margin: 0;
   padding: 0;
   font-family:
-    'Source Han Sans CN VF', 'Source Han Sans', 'MiSans', 'Harmony Sans', 'OPPO Sans', 微软雅黑,
+    'Yummy Web Sans VF', 'Source Han Sans', 'MiSans', 'Harmony Sans', 'OPPO Sans', 微软雅黑,
     'Microsoft YaHei', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
@@ -622,7 +601,7 @@ dl {
  * `.katex *` 的 0,1,1）继续生效，从而保住上面后两类字体。 */
 .katex,
 .katex * {
-  font-family: KaTeX_Main, 'Source Han Sans CN VF', serif;
+  font-family: KaTeX_Main, 'Yummy Web Sans VF', serif;
 }
 
 .katex {
@@ -654,7 +633,7 @@ dl {
 .markdown-body h5,
 .markdown-body h6 {
   font-family:
-    'Source Han Sans CN VF', 'Source Han Sans', 'MiSans', 'Harmony Sans', 'OPPO Sans', 微软雅黑,
+    'Yummy Web Sans VF', 'Source Han Sans', 'MiSans', 'Harmony Sans', 'OPPO Sans', 微软雅黑,
     'Microsoft YaHei', sans-serif;
 }
 /* LaTeX copy button */

@@ -1,0 +1,20 @@
+{
+  "chunkSize": 512,
+  "fonts": [
+    {
+      "id": "sans",
+      "source": "SourceHanSansCN-VF.otf.woff2",
+      "family": "Yummy Web Sans VF",
+      "rename": true,
+      "weight": "100 900",
+      "unicodeRanges": ["U+3000-303F", "U+3400-4DBF", "U+4E00-9FFF", "U+F900-FAFF", "U+FF00-FFEF"]
+    },
+    {
+      "id": "code",
+      "source": "LXGWBrightCodeGB-Regular.ttf",
+      "family": "LXGW Bright Code GB",
+      "rename": false,
+      "weight": "400"
+    }
+  ]
+}
