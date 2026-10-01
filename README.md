@@ -206,6 +206,8 @@ tags: [标签1, 标签2]
 
 在 `_config.yml` 中填写 `github_username` 或 `github_orgs`，运行 `npm run fetch:projects` 可生成 `_data/projects.json`；项目列表优先读取这份数据。也可通过 `projects` 配置静态列表。
 
+首页和关于页的项目侧栏默认最多显示 5 项。可通过 `side_bar_repo_limit` 调整数目，设为 `0` 隐藏侧栏；没有项目数据时，这两个页面会自动使用单栏。
+
 如需使用 GitHub metadata，将 `jekyll-github-metadata` 加入 `plugins`，并填写 `repository: 用户名/仓库名`。模板默认关闭此插件，使未配置仓库身份的生产构建也能完成；插件在生产环境需要明确的仓库身份，参见 [官方配置说明](https://github.com/jekyll/github-metadata/blob/main/docs/configuration.md)。
 
 ### Disqus 评论
