@@ -8,6 +8,10 @@ menu: 关于
 
 这里可以介绍你自己。欢迎使用 Yummy Modern 主题搭建个人网站，展示项目、博客和常用收藏。
 
+## 关于主题
+
+本站使用 [Yummy Modern](https://github.com/zyraxi21/Yummy-Modern) 主题，由 DONG Chuan 的原模板 [Yummy Jekyll](https://github.com/DONGChuan/Yummy-Jekyll) 修改而来，以 Apache License 2.0 分发。
+
 ## 联系方式
 
 {% if site.email %}
