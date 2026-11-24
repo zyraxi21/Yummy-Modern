@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "欢迎使用 Jekyll！"
-date:   2016-05-13 13:25:35 +0200
-categories: Jekyll
+title:  "欢迎使用 Yummy Modern！"
+date:   2026-10-01 13:25:35 +0800
+categories: 其他
 ---
 
 欢迎使用 Yummy Modern 作为你的 Jekyll 主题！

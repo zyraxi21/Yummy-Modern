@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Markdown 元素效果展示
-category: 展示
+category: 其他
 tags: [展示]
 excerpt: "Markdown 元素效果展示，包括代码、公式、表格和流程图。"
 ---

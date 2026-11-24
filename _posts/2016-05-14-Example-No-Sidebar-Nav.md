@@ -2,7 +2,7 @@
 layout: post
 title:  "无侧边导航示例"
 date:   2016-05-14 09:00:00 +0200
-categories: Jekyll
+categories: 其他
 no-post-nav: true
 ---
 
